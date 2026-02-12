@@ -186,7 +186,7 @@ Config loadConfig(const std::string& configPath)
         const auto errStr{errStream.str()};
         if (cs.isAnyMandatorySettingMissing() || not errStr.empty())
         {
-            auto tempDir{(std::filesystem::temp_directory_path() / "pytes_XXXXXX").string()};
+            auto tempDir{(std::filesystem::temp_directory_path() / "solax_XXXXXX").string()};
             if (mkdtemp(tempDir.data()) == nullptr)
             {
                 throw std::runtime_error{"Failed to create temporary directory with mkdtemp"};
