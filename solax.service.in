@@ -1,0 +1,19 @@
+[Unit]
+Description=CDP SOLAX REST Service
+After=network-online.target systemd-udev-settle.service
+Requires=systemd-udev-settle.service
+Wants=network-online.target
+
+[Service]
+ExecStart=/opt/solax/solax_daemon
+WorkingDirectory=/opt/solax
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+RestartSec=5
+StartLimitIntervalSec=0
+StartLimitBurst=0
+User=$ENV{USER}
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+
+Include(FetchContent)
+
+FetchContent_Declare(
+  Catch2
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG        v3.4.0
+)
+
+FetchContent_MakeAvailable(Catch2)
+
+add_executable(test_parse test_parse.cpp)
+target_link_libraries(test_parse PRIVATE Catch2::Catch2WithMain solax)
+
+add_executable(test_aggregate test_aggregate.cpp)
+target_link_libraries(test_aggregate PRIVATE Catch2::Catch2WithMain solax)
+
+add_executable(test_serial_adapter test_serial_adapter.cpp)
+target_link_libraries(test_serial_adapter PRIVATE Catch2::Catch2WithMain solax)
+
+include(Catch)
+catch_discover_tests(test_parse)
+catch_discover_tests(test_aggregate)
+catch_discover_tests(test_serial_adapter)
